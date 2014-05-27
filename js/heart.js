@@ -24,7 +24,6 @@
 			var self = this;
 			// The default options
 			this.options = {
-				id: '', // The id for broadcasts
 				target: null, // Selector of element or the element itself
 				width: 500,
 				height: 500,
