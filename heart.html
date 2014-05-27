@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<title>Heart Demo</title> 
+<style>
+body {
+	background-color:#ddd;
+}
+canvas {
+	border: 1px solid #aaa;
+	background-color:#fff;
+}
+#enable {
+	border: 1px solid #000;
+	border-radius: 5px;
+	padding-left: 5px;
+	padding-right: 5px;
+	color: #333;
+	background-color: #eee;
+	font-weight:bold;
+	cursor:pointer;
+}
+#rate {
+	width: 400px;
+}
+</style>
+</head>
+<body>
+
+<div id="heart"></div>
+
+<div style="background-color:#fff">
+	<label for="rate">Pulse:</label>
+	<input id="rate" type="range" min="30" max="120" step="1" />
+	<span id="heartrate"></span>
+</div>
+<p>
+	<a id="enable">Enable</a> sound on mobile.
+</p>
+
+<!-- raf.js is a polyfill for requestAnimationFrame -->
+<script type="text/javascript" src="assets/js/lib/raf.js"></script>
+<script type="text/javascript" src="assets/js/core/pm.js"></script>
+<script type="text/javascript" src="assets/js/outputs/heart.js"></script>
+<script type="text/javascript">
+	var myHeart = PM.Heart({
+		target: '#heart',
+		audioEnabled: true
+	});
+
+	var trackRange = false;
+	var rateInput = document.getElementById('rate');
+	var rateInfo = document.getElementById('heartrate');
+	var pulseHandler = function() {
+		var heartrate = rateInput.value*1;
+		myHeart.pulse(heartrate);
+		rateInfo.innerHTML = heartrate;
+	}
+	rateInput.addEventListener('change', pulseHandler, false);
+	rateInput.addEventListener('mousedown', function() {
+		trackRange = true;
+	}, false);
+	rateInput.addEventListener('mouseup', function() {
+		trackRange = false;
+	}, false);
+	rateInput.addEventListener('mousemove', function() {
+		if(trackRange) {
+			pulseHandler();
+		}
+	}, false);
+	rateInput.value = myHeart.heartrate;
+	rateInfo.innerHTML = myHeart.heartrate;
+
+	var enableMobile = document.getElementById('enable');
+	enableMobile.addEventListener('mouseup', function() {
+		myHeart.heartbeat();
+	}, false);
+</script>
+</body>
+</html>
