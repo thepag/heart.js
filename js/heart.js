@@ -4,28 +4,20 @@
  *
  * Copyright (c) 2014 Happyworm Ltd
  * Licensed under the MIT license.
- * http://opensource.org/licenses/MIT
+ * https://github.com/thepag/heart.js/blob/master/LICENSE
  *
  * Author: Mark J Panaghiston
  * Version: 0.0.1
- * Date: 10th May 2014
+ * Date: 27th May 2014
  */
 
-(function(PM) {
+(function(window) {
 
 	var DEBUG = false;
 
 	var Heart = function(options) {
 		this.init(options);
 	};
-
-	if(typeof PM === 'undefined') {
-		window.Heart = Heart; // 
-	} else {
-		PM.Heart = function(options) {
-			return new Heart(options); // 
-		};
-	}
 
 	Heart.prototype = {
 		init: function(options) {
@@ -40,7 +32,7 @@
 				bloat: 0.25,
 				color: '#DA755C',
 				audioEnabled: false,
-				audio: 'assets/audio/heart/heartbeat.wav',
+				audio: 'audio/heart.wav',
 				context: null
 			};
 			// Read in instancing options.
@@ -51,7 +43,7 @@
 			}
 			this.target = typeof this.options.target === 'string' ? document.querySelector(this.options.target) : this.options.target;
 			// The Web Audio API context
-			this.context = PM && PM.context ? PM.context : this.options.context;
+			this.context = this.options.context ? this.options.context : new (window.AudioContext || window.webkitAudioContext)();
 
 			this.heartrate = this._heartrate = 60;
 			this.rotation = Math.PI * (135/180);
@@ -152,7 +144,7 @@
 		},
 		_beat: function() {
 			var self = this;
-			this._beatId = requestAnimationFrame(function(t) {
+			this._beatId = window.requestAnimationFrame(function(t) {
 				self._beat();
 
 				var now = new Date().getTime() / 1000;
@@ -172,7 +164,7 @@
 			});
 		},
 		kill: function() {
-			cancelAnimationFrame(this._beatId);
+			window.cancelAnimationFrame(this._beatId);
 			this.enabled = false;
 		},
 		heartbeat: function() {
@@ -185,4 +177,6 @@
 			}
 		}
 	}
-}(window.PM));
+
+	window.Heart = Heart;
+}(window));

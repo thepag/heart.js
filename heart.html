@@ -40,11 +40,10 @@ canvas {
 </p>
 
 <!-- raf.js is a polyfill for requestAnimationFrame -->
-<script type="text/javascript" src="assets/js/lib/raf.js"></script>
-<script type="text/javascript" src="assets/js/core/pm.js"></script>
-<script type="text/javascript" src="assets/js/outputs/heart.js"></script>
+<script type="text/javascript" src="lib/raf.js"></script>
+<script type="text/javascript" src="js/heart.js"></script>
 <script type="text/javascript">
-	var myHeart = PM.Heart({
+	var myHeart = new Heart({
 		target: '#heart',
 		audioEnabled: true
 	});
