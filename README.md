@@ -18,7 +18,7 @@ var myHeart = new Heart({
 
 ## Options
 
-The options with defaults:
+The options with their defaults:
 ```javascript
 var options = {
 	target: null, // Selector of element or the element itself
@@ -35,10 +35,12 @@ var options = {
 var myHeart = new Heart(options);
 ```
 If no Audio Context is given, one is created automatically.
+Usually you only want one Audio Context on a page, so pass in your context to avoid multiple Audio Contexts from slowing the page down.
 
 ## Control
 
 Change the pulse using:
 ```javascript
-myHeart.pulse(heartrate);
+myHeart.pulse(heartrate); // In Beats Per Minute (BPM)
 ```
+Changes to the pulse rate take affect when the pulsating heart is at its minimum value.
