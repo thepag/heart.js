@@ -47,4 +47,4 @@ Change the pulse using:
 ```javascript
 myHeart.pulse(heartrate); // In Beats Per Minute (BPM)
 ```
-Changes to the pulse rate take affect when the pulsating heart is at its minimum value.
+Changes to the pulse rate take affect when the pulsating heart is at its smallest.
