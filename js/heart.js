@@ -30,7 +30,7 @@
 				size: 200,
 				bloat: 0.25,
 				color: '#DA755C',
-				audioEnabled: false,
+				audioEnabled: true,
 				audio: 'audio/heart.wav',
 				context: null
 			};

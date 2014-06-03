@@ -10,8 +10,7 @@ The HTML:
 The JavaScript:
 ```javascript
 var myHeart = new Heart({
-	target: '#heart',
-	audioEnabled: true
+	target: '#heart'
 });
 ```
 
@@ -24,9 +23,16 @@ var options = {
 	size: 200, // The mid-point size
 	bloat: 0.25, // Magnitude of the heart animation [+/- bloat * size]
 	color: '#DA755C',
-	audioEnabled: false,
+	audioEnabled: true,
 	audio: 'audio/heart.wav',
-	context: null // Specify an Audio context
+	context: null // [optional] Specify an Audio context
 };
 var myHeart = new Heart(options);
+```
+If no Audio Context is given, one is created automatically.
+
+
+Control the pulse:
+```javascript
+myHeart.pulse(heartrate);
 ```
