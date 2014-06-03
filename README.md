@@ -2,6 +2,8 @@
 
 A beating heart on canvas with audio.
 
+## Use
+
 The HTML:
 ```html
 <div id="heart"></div>
@@ -14,10 +16,13 @@ var myHeart = new Heart({
 });
 ```
 
+## Options
+
 The options with defaults:
 ```javascript
 var options = {
 	target: null, // Selector of element or the element itself
+	heartrate: 60, // The initial pulse setting
 	width: 500, // Width in pixels
 	height: 500, // Height in pixels
 	size: 200, // The mid-point size
@@ -31,8 +36,9 @@ var myHeart = new Heart(options);
 ```
 If no Audio Context is given, one is created automatically.
 
+## Control
 
-Control the pulse:
+Change the pulse using:
 ```javascript
 myHeart.pulse(heartrate);
 ```

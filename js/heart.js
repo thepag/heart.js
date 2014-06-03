@@ -25,6 +25,7 @@
 			// The default options
 			this.options = {
 				target: null, // Selector of element or the element itself
+				heartrate: 60,
 				width: 500,
 				height: 500,
 				size: 200,
@@ -44,7 +45,7 @@
 			// The Web Audio API context
 			this.context = this.options.context ? this.options.context : new (window.AudioContext || window.webkitAudioContext)();
 
-			this.heartrate = this._heartrate = 60;
+			this.heartrate = this._heartrate = this.options.heartrate;
 			this.rotation = Math.PI * (135/180);
 			this.beatTime = 0; // A time reference to the start of the beat
 			this.enabled = false;
