@@ -2,6 +2,10 @@
 
 A beating heart on canvas with audio.
 
+## Demo
+
+See a working [demo](http://happyworm.com/thepag/lab/heart.js/)
+
 ## Use
 
 The HTML:

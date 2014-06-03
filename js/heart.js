@@ -7,8 +7,8 @@
  * https://github.com/thepag/heart.js/blob/master/LICENSE
  *
  * Author: Mark J Panaghiston
- * Version: 0.0.1
- * Date: 27th May 2014
+ * Version: 0.1.0
+ * Date: 3rd June 2014
  */
 
 (function(window) {
